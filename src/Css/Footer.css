@@ -1,0 +1,128 @@
+* {
+    margin: 0;
+  
+    padding: 0;
+  
+    box-sizing: border-box;
+  }
+  
+
+  
+  footer {
+
+    background: #10142c;
+  
+    height: auto;
+  
+    width: 100%;
+  
+    padding-top: 40px;
+  
+    color: #fff;
+  }
+  
+  .footer-content {
+    display: flex;
+  
+    align-items: center;
+  
+    justify-content: center;
+  
+    flex-direction: column;
+  
+    text-align: center;
+  }
+  
+  .footer-content h3 {
+    font-size: 2.1rem;
+  
+    font-weight: 500;
+  
+    text-transform: capitalize;
+  
+    line-height: 3rem;
+  }
+  
+  .footer-content p {
+    max-width: 800px;
+  
+    margin: 10px auto;
+  
+    line-height: 28px;
+  
+    font-size: 14px;
+  
+    color: #cacdd2;
+  }
+  
+  .socials {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 1rem 0 3rem 0;
+    flex-wrap: wrap;
+    padding: 0;
+    cursor: pointer;
+  }
+  
+  .socials li {
+    margin: 0 10px;
+    flex: 0 0 auto; /* Add flex property to make social icons take auto width */
+  }
+  
+  .socials a {
+    text-decoration: none;
+    color: #fff;
+    padding: 5px;
+    display: flex; /* Add display flex to align icon and text vertically */
+    align-items: center; /* Add align-items property to center icon and text vertically */
+  }
+
+  
+  .footer-bottom {
+    background: #151b3b;
+  
+    width: 100%;
+  
+    padding: 20px;
+    
+    text-align: center;
+  }
+  
+  .footer-bottom p {
+    text-align: center;
+  
+    font-size: 14px;
+  
+    word-spacing: 2px;
+
+    padding: 0;
+
+    margin-bottom: 0;
+  }
+  
+
+  
+  .footer-bottom span {
+    text-transform: uppercase;
+  }
+  
+  
+  
+  @media (max-width: 500px) {
+    .footer-bottom p {
+      float: none;
+    }
+  
+    .footer-menu ul {
+      display: flex;
+  
+      margin-top: 10px;
+  
+      margin-bottom: 20px;
+  
+      text-align: center;
+    }
+  }
+  
