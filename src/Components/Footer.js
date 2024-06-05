@@ -45,7 +45,7 @@ function Footer() {
 
     <div class="footer-bottom">
 
-      <p>© 2023 Luka Leko - Sva prava pridržana.<span id="year"></span></p>
+      <p>© 2024 Luka Leko - Sva prava pridržana.<span id="year"></span></p>
 
      
     </div>

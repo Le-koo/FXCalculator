@@ -1,5 +1,5 @@
 import Konverzija from "./Konverzija.js";
-import { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import '../Css/Tecajevi.css';
 
 function Tecajevi() {
@@ -105,108 +105,115 @@ function Tecajevi() {
 
 
 //input value
-  const [data, setData] = useState(null)
-  function getData(val){
-    setData(val.target.value)
-  }
+const [data, setData] = useState(null);
+const inputRef = useRef(null); // Dodavanje useRef za input polje
+
+function getData(val) {
+  setData(val.target.value);
+}
 
 
     //koja ce se valuta odabrat
-   const [selectedValue, setSelectedValue] = useState('');
+    const [selectedValue, setSelectedValue] = useState('');
 
-   const handleSelectChange = (event) => {
-     setSelectedValue(event.target.value);
-   };
+    const handleSelectChange = (event) => {
+      setSelectedValue(event.target.value);
+    };
+
+   useEffect(() => {
+    inputRef.current.focus();
+  }, []);
 
   return (
     
 
     <div>
-<div className="tecajevi">
-  
+      <div className="tecajevi">
         <center>
-      <div className="wrapper glass">
-        <header>Kalkulator Valuta</header>
-        <form action="#">
-          <div class="amount">
-            <p>Unesite Količinu</p>
-            {/* onChange uzima broj iz inputa i spremit ga u data varijablu koja će se poslat u Konverzija.js */}
-            <input type="number" min="1" onChange={getData}/>
-          </div>
-          <div class="drop-list">
-            <div class="from">
-              <p>Iz</p>
-              <div class="select-box" id="euro">
-                <img src="https://flagcdn.com/48x36/eu.png" alt="flag"/>
-                <select disabled>
-                <option value="euro">Euro (EUR)</option>
-                </select>
+          <div className="wrapper glass">
+            <header>Kalkulator Valuta</header>
+            <form action="#">
+              <div className="amount">
+                <p>Unesite Količinu</p>
+                {/* Dodavanje ref za input polje */}
+                <input
+                  type="number"
+                  min="1"
+                  onChange={getData}
+                  ref={inputRef} // Pridruživanje ref input polju
+                />
               </div>
-            </div>
-            <div class="icon"><i class="fas fa-exchange-alt"></i></div>
-            <div class="to">
-              <p>U</p>
-              <div class="select-box">
-                <img src={zastave[selectedValue]} alt=""/>
-                <select value={selectedValue} onChange={handleSelectChange}>
-                <option value="">Select an option</option>
-                <option value="američkiDolar">Američki Dolar (USD)</option>
-                <option value="australijskiDolar">Australijski dolar (AUD)</option>
-                <option value="argentinskiPeso">Argentinski peso (ARS)</option>
-                <option value="bosanskaMarka">Bosanska marka (BAM)</option>
-                <option value="britanskaFunta">Britanska funta (GBP)</option>
-                <option value="brazilskiReal">Brazilski real (BRL)</option>
-                <option value="češkaKruna">Češka kruna (CZK)</option>
-                <option value="danskaKruna">Danska kruna (DKK)</option>
-                <option value="egipatskaFunta">Egipatska funta (EGP)</option>
-                <option value="hongkonškiDolar">Hongkonški dolar (HKD)</option>
-                <option value="indijskaRupija">Indijska rupija (INR)</option>
-                <option value="indonezijskaRupija">Indonezijska rupija (IDR)</option>
-                <option value="izraelskiNoviŠekel">Izraelski novi šekel (ILS)</option>
-                <option value="japanskiJen">Japanski jen (JPY)</option>
-                <option value="južnoafričkiRand">Južnoafrički rand (ZAR)</option>
-                <option value="južnokorejskiWon">Južnokorejski won (KRW)</option>
-                <option value="kanadskiDolar">Kanadski dolar (CAD)</option>
-                <option value="katarskiRial">Katarski rial (QAR)</option>
-                <option value="kazahstanskiTenge">Kazahstanski tenge (KZT)</option>
-                <option value="kineskiYuan">Kineski yuan (CNY)</option>
-                <option value="kolumbijskiPeso">Kolumbijski peso (COP)</option>
-                <option value="hrvatskaKuna">Hrvatska kuna (HRK)</option>
-                <option value="kuvajtskiDinar">Kuvajtski dinar (KWD)</option>
-                <option value="libanonskaFunta">Libanonska funta (LBP)</option>
-                <option value="malezijskiRinggit">Malezijski ringgit (MYR)</option>
-                <option value="mađarskaForinta">Mađarska forinta (HUF)</option>
-                <option value="meksičkiPeso">Meksički peso (MXN)</option>
-                <option value="norveškaKruna">Norveška kruna (NOK)</option>
-                <option value="novozelandskiDolar">Novozelandski dolar (NZD)</option>
-                <option value="pakistanskaRupija">Pakistanska rupija (PKR)</option>
-                <option value="poljskiZlot">Poljski zlot (PLN)</option>
-                <option value="rumunjskiLej">Rumunjski lej (RON)</option>
-                <option value="ruskiRubalj">Ruski rubalj (RUB)</option>
-                <option value="saudijskiRijal">Saudijski rijal (SAR)</option>
-                <option value="singapurskiDolar">Singapurski dolar (SGD)</option>
-                <option value="srpskiDinar">Srpski dinar (RSD)</option>
-                <option value="svicarskiFranak">Švicarski franak (CHF)</option>
-                <option value="tajlandskiBaht">Tajlandski baht (THB)</option>
-                <option value="tajvanskiDolar">Tajvanski dolar (TWD)</option>
-                <option value="turskaLira">Turska lira (TRY)</option>
-                <option value="ukrajinskaHrivnja">Ukrajinska hrivnja (UAH)</option>
-                <option value="urugvajskiPeso">Urugvajski peso (UYU)</option>
-                <option value="venecuelanskiBolivar">Venecuelanski bolivar (VES)</option>
-                <option value="švicarskiFranak">Švicarski franak (CHF)</option>
-                <option value="švedskaKruna">Švedska kruna (SEK)</option>
-                </select>
+              <div className="drop-list">
+                <div className="from">
+                  <p>Iz</p>
+                  <div className="select-box" id="euro">
+                    <img src="https://flagcdn.com/48x36/eu.png" alt="flag" />
+                    <select disabled>
+                      <option value="euro">Euro (EUR)</option>
+                    </select>
+                  </div>
+                </div>
+                <div className="icon"><i className="fas fa-exchange-alt"></i></div>
+                <div className="to">
+                  <p>U</p>
+                  <div className="select-box">
+                    <img src={zastave[selectedValue]} alt="" />
+                    <select value={selectedValue} onChange={handleSelectChange}>
+                      <option value="">Odaberite valutu</option>
+                      <option value="američkiDolar">Američki Dolar (USD)</option>
+                      <option value="australijskiDolar">Australijski dolar (AUD)</option>
+                      <option value="argentinskiPeso">Argentinski peso (ARS)</option>
+                      <option value="bosanskaMarka">Bosanska marka (BAM)</option>
+                      <option value="britanskaFunta">Britanska funta (GBP)</option>
+                      <option value="brazilskiReal">Brazilski real (BRL)</option>
+                      <option value="češkaKruna">Češka kruna (CZK)</option>
+                      <option value="danskaKruna">Danska kruna (DKK)</option>
+                      <option value="egipatskaFunta">Egipatska funta (EGP)</option>
+                      <option value="hongkonškiDolar">Hongkonški dolar (HKD)</option>
+                      <option value="indijskaRupija">Indijska rupija (INR)</option>
+                      <option value="indonezijskaRupija">Indonezijska rupija (IDR)</option>
+                      <option value="izraelskiNoviŠekel">Izraelski novi šekel (ILS)</option>
+                      <option value="japanskiJen">Japanski jen (JPY)</option>
+                      <option value="južnoafričkiRand">Južnoafrički rand (ZAR)</option>
+                      <option value="južnokorejskiWon">Južnokorejski won (KRW)</option>
+                      <option value="kanadskiDolar">Kanadski dolar (CAD)</option>
+                      <option value="katarskiRial">Katarski rial (QAR)</option>
+                      <option value="kazahstanskiTenge">Kazahstanski tenge (KZT)</option>
+                      <option value="kineskiYuan">Kineski yuan (CNY)</option>
+                      <option value="kolumbijskiPeso">Kolumbijski peso (COP)</option>
+                      <option value="hrvatskaKuna">Hrvatska kuna (HRK)</option>
+                      <option value="kuvajtskiDinar">Kuvajtski dinar (KWD)</option>
+                      <option value="libanonskaFunta">Libanonska funta (LBP)</option>
+                      <option value="malezijskiRinggit">Malezijski ringgit (MYR)</option>
+                      <option value="mađarskaForinta">Mađarska forinta (HUF)</option>
+                      <option value="meksičkiPeso">Meksički peso (MXN)</option>
+                      <option value="norveškaKruna">Norveška kruna (NOK)</option>
+                      <option value="novozelandskiDolar">Novozelandski dolar (NZD)</option>
+                      <option value="pakistanskaRupija">Pakistanska rupija (PKR)</option>
+                      <option value="poljskiZlot">Poljski zlot (PLN)</option>
+                      <option value="rumunjskiLej">Rumunjski lej (RON)</option>
+                      <option value="ruskiRubalj">Ruski rubalj (RUB)</option>
+                      <option value="saudijskiRijal">Saudijski rijal (SAR)</option>
+                      <option value="singapurskiDolar">Singapurski dolar (SGD)</option>
+                      <option value="srpskiDinar">Srpski dinar (RSD)</option>
+                      <option value="svicarskiFranak">Švicarski franak (CHF)</option>
+                      <option value="tajlandskiBaht">Tajlandski baht (THB)</option>
+                      <option value="tajvanskiDolar">Tajvanski dolar (TWD)</option>
+                      <option value="turskaLira">Turska lira (TRY)</option>
+                      <option value="ukrajinskaHrivnja">Ukrajinska hrivnja (UAH)</option>
+                      <option value="urugvajskiPeso">Urugvajski peso (UYU)</option>
+                      <option value="venecuelanskiBolivar">Venecuelanski bolivar (VES)</option>
+                      <option value="švicarskiFranak">Švicarski franak (CHF)</option>
+                      <option value="švedskaKruna">Švedska kruna (SEK)</option>
+                    </select>
+                  </div>
+                </div>
               </div>
-            </div>
+              <Konverzija izabranaValuta={selectedValue} tecaj={tecajevi} brojZaPretvorit={data} />
+            </form>
           </div>
-          <Konverzija izabranaValuta={selectedValue} tecaj={tecajevi} brojZaPretvorit={data}/>
-        </form>
+        </center>
       </div>
-  
-      
-      </center>
-  
-</div>
     </div>
   );
 }
