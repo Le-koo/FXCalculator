@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import $ from 'jquery';
 import "../Css/Navbar.css";
 import { Link } from 'react-router-dom';
+import ThemeToggle from "./ThemeToggle";
 
 function Navbar() {
   useEffect(() => {

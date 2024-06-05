@@ -3,11 +3,18 @@ import "../Css/Naslovna.css";
 import laptop from "../slike/laptop.png";
 import kalkulator from "../slike/calculator.png";
 import pitanje from "../slike/pitanje.png";
-import React, {Component} from "react";
+import React, {useContext} from "react";
+import {ThemeContext} from '../Context/ThemeContext';
+import ThemeToggle from "./ThemeToggle";
 
-export class Naslovna extends Component{ render(){
-  return (
-    <div>
+
+
+function Naslovna(){
+  
+  const{isLightTheme, light, dark} = useContext(ThemeContext);
+  const theme = isLightTheme ? light : dark;
+  return(
+  <div style={{color: theme.syntax, background: theme.bg}}>
 
 <div className="hero-container">
 
@@ -26,6 +33,7 @@ export class Naslovna extends Component{ render(){
 
 
       <div className="container">
+        <ThemeToggle/>
         <h1>Što je FXCalculator</h1>
         <p>FXCalculator je kalkulator koji može preračunati Euro, vodeću svjetsku valutu, u preko 40 različitih valuta diljem svijeta</p>
         <img src={kalkulator}/>
@@ -35,13 +43,12 @@ export class Naslovna extends Component{ render(){
           <br/>
           Iz tog, i mnogih drugih razloga napravili smo FXCalculator.
           <br/>
-          FXCalculator koristi tečajeve koji se ažuriraju svake sekunde te tako korisnicima pruža najbolju uslugu
+          FXCalculator koristi tečajeve koji se ažuriraju svake sekunde te tako korisnicima pruža najbolju uslugu.
           
         </p>
       </div>
     
     </div>
-  );
-}
-}
+)}
+
 export default Naslovna;

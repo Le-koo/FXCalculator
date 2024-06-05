@@ -5,29 +5,26 @@ import Tecajevi from './Components/Tecajevi';
 import Navbar from './Components/Navbar';
 import Footer from './Components/Footer';
 import Statistika from './Components/Statistika';
+import ThemeContextProvider from './Context/ThemeContext';
 
 function App() {
   return (
     
       <div className='App'>
-        
-        
-        
-      
-        <Router>
-        <Navbar />
+        <ThemeContextProvider>
+          <Router>
+            <Navbar />
 
-        <Routes>
-          <Route path="/" element={<Naslovna />} />
-          <Route path="/tecajevi" element={<Tecajevi />} />
-          <Route path="/statistika" element={<Statistika />} />
-        </Routes>
-        <Footer/>
-        </Router>
-
-        
+            <Routes>
+              <Route path="/" element={<Naslovna />} />
+              <Route path="/tecajevi" element={<Tecajevi />} />
+              <Route path="/statistika" element={<Statistika />} />
+            </Routes>
+            
+            <Footer/>
+          </Router>
+        </ThemeContextProvider>
       </div>
-    
   );
 }
 
